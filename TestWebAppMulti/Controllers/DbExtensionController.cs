@@ -1,6 +1,5 @@
 ﻿using DevTestModel.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace TestWebAppMulti.Controllers
 {
@@ -28,19 +27,24 @@ namespace TestWebAppMulti.Controllers
         public async Task<IActionResult> ViewAction()
         {
             // Use Database.ExecuteSqlRaw
-            string c = _dbcontext.Database.ExecuteSqlRaw("SELECT COUNT(*) FROM dbo.DataHistoryArticle").ToString();
+            //string c = _dbcontext.Database.ExecuteSqlRaw("SELECT COUNT(*) FROM dbo.DataHistoryArticle").ToString();
 
             ViewBag.CountNewsArticle = _dbcontext.NewsArticle.Count().ToString();
-            ViewBag.CountDataHistoryArticle = c;
-
+            ViewBag.CountDataHistoryArticle = _dbcontext.DataHistoryArticle.Count().ToString();
             return View();
         }
 
+
         public async Task<IActionResult> TranslateEUHR()
         {
-            // napraviti live translation 
-            //id = "languageSelect"
             return View();
         } // na cryartController? 
+
+        //napraviti zaseban web API proiject za crypto news 
+        // testovi project
+        // api za eng/hr translate realtime session tranlation in web using minimal docs 
+        // json subobject extraction (dbo.SourceInfoModel
+
+
     }
 }

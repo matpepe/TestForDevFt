@@ -119,7 +119,7 @@ namespace TestWebAppMulti.Controllers
                         return View("Error");
                     }
                 }
-                //connection.Close(); //closing 
+                connection.Close(); //closing 
             }
             return RedirectToAction("ViewAction", "DbExtension"); // Redirect to the Index action after saving
             //return RedirectToAction("Index");
@@ -310,6 +310,16 @@ namespace TestWebAppMulti.Controllers
             return dataTable;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ByCategory()
+        {
+            List<DataHistoryArticle> data = await _dbcontext.DataHistoryArticle.ToListAsync();
+
+            return View(data);
+        }
+
+        //ByCategory
+
         //public IActionResult ViewAction() { return View(); }
         //public IActionResult Index2() { return View(); }
 
@@ -317,156 +327,24 @@ namespace TestWebAppMulti.Controllers
         //private DbContextOptions<ApplicationDbContext> GetDbContextOptions() { }
 
 
-        /*
-        //[HttpPost]
-        //public void InsertSourceTableData()
-        //{
-
-        //}
-        
-        public IActionResult DeleteAll()
-        {
-            // Assuming YourTable represents the table you want to delete records from
-            var allRecords = context.ZeroLayer.ToList();
-
-            foreach (var record in allRecords)
-            {
-                context.ZeroLayer.Remove(record);
-                context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('dbo.ZeroLayer', RESEED, 0)");
-            }
-
-            context.SaveChanges();
-
-            return RedirectToAction(nameof(Index)); // Redirect to the page displaying the table
-        } 
-                
-        */
     }
 }
 
 
 /*
-
-        [HttpPost]
-        public ActionResult InsertSourceTableData()
+         //[HttpGet]
+        public async Task<IActionResult> ByCategory()
         {
-            var client = new RestClient(ApiKeyURL + ApiKey);
-            string xapikey = "x-api-key";
-            var request = new RestRequest();
+            // Get the list of categories from the database
+            List<DC_NewsCategoryCR> categories = await _dbcontext.DC_NewsCategoryCR.ToListAsync();
 
-            request.AddHeader(xapikey, ApiKey);
+            // Pass the list of categories to the view using ViewBag
+            ViewBag.Categories = new SelectList(categories, "CategoryNewsName", "CategoryNewsName");
 
-            var response = client.Execute(request);
+            // You can adjust the query to filter data based on the selected category
+            List<DataHistoryArticle> data = await _dbcontext.DataHistoryArticle.ToListAsync();
 
-            if (response.IsSuccessful)
-            {
-                try
-                {
-                    // Deserialize the response to your ApiResponse
-                    var apiResponse = JsonConvert.DeserializeObject<NewsApiResponse>(response.Content);
-
-                    if (apiResponse != null && apiResponse.Data != null)
-                    {
-                        // Filter out articles with existing IDs
-                        var newArticles = apiResponse.Data.Where(article => !ArticleExists(article.Id)).ToList();
-
-                        // Create a list of SourceInfoModel from the NewsArticleModel list
-                        var sourceInfoList = newArticles.Select(article => new SourceInfoModel
-                        {
-                            Name = article.SourceInfo?.Name,
-                            Img = article.SourceInfo?.Img,
-                            Source = article.SourceInfo?.Source
-                        }).ToList();
-
-                        // Convert the list of SourceInfoModel to a DataTable
-                        DataTable dataTableSourceInfo = ConvertToDataTableSourceInfo(sourceInfoList);
-
-                        // Save data to SQL Server
-                        SaveDataToSqlServerSourceInfo(dataTableSourceInfo);
-
-                        return RedirectToAction("ViewAction", "DbExtension"); // Redirect to the Index action after saving
-                    }
-                    else
-                    {
-                        ViewBag.ErrorMessage = "Error: Invalid API response format.";
-                        return View("Error");
-                    }
-                }
-                catch (JsonSerializationException ex)
-                {
-                    ViewBag.ErrorMessage = "Error deserializing API response: " + ex.Message;
-                    return View("Error");
-                }
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Error calling API: " + response.ErrorMessage;
-                return View("Error");
-            }
+            return View(data);
         }
-
-
-        public static DataTable ConvertToDataTableSourceInfo(ICollection<SourceInfoModel> data)
-        {
-            DataTable dataTable = new DataTable();
-
-            // Assume the first item in the collection is not null
-            if (data != null && data.Count > 0)
-            {
-                // Get the properties of the SourceInfoModel class
-                var properties = typeof(SourceInfoModel).GetProperties();
-
-                // Create the columns in the DataTable based on the properties
-                foreach (var property in properties)
-                {
-                    Type columnType = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
-                    dataTable.Columns.Add(property.Name, columnType);
-                }
-
-                // Populate the DataTable with data from the collection
-                foreach (var item in data)
-                {
-                    DataRow row = dataTable.NewRow();
-                    foreach (var property in properties)
-                    {
-                        row[property.Name] = property.GetValue(item) ?? DBNull.Value;
-                    }
-                    dataTable.Rows.Add(row);
-                }
-            }
-            return dataTable;
-        }
-
-        private void SaveDataToSqlServerSourceInfo(DataTable dataTable)
-        {
-            using (SqlConnection connection = new SqlConnection(SqlConnectionString))
-            {
-                connection.Open();
-
-                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
-                {
-                    bulkCopy.DestinationTableName = "SourceInfoModel"; // Your SQL Server table name
-
-                    foreach (DataColumn dataTableColumn in dataTable.Columns)
-                    {
-                        // Find the matching SQL Server column by considering case differences
-                        foreach (DataColumn sqlServerColumn in GetSqlServerTableColumns())
-                        {
-                            if (string.Equals(dataTableColumn.ColumnName, sqlServerColumn.ColumnName, StringComparison.OrdinalIgnoreCase))
-                            {
-                                bulkCopy.ColumnMappings.Add(dataTableColumn.ColumnName, sqlServerColumn.ColumnName);
-                                break;
-                            }
-                        }
-                    }
-                    bulkCopy.WriteToServer(dataTable);
-                }
-            }
-        }
-
-        private bool ArticleInfoExists(int articleId)
-        {
-            return _dbcontext.SourceInfoModel.Any(s => s.Id == articleId);
-        }
+ 
  */
-

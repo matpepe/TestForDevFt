@@ -4,7 +4,7 @@
 
 namespace DevTestModel.Migrations
 {
-    public partial class ini3 : Migration
+    public partial class Init2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

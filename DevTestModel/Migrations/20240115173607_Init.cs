@@ -10,6 +10,49 @@ namespace DevTestModel.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "DataHistoryArticle",
+                columns: table => new
+                {
+                    ArticleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PublishedOn = table.Column<long>(type: "bigint", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Upvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Downvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Categories = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SourceInfoId = table.Column<int>(type: "int", nullable: true),
+                    NewsApiResponseApiResponseId = table.Column<int>(type: "int", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: true),
+                    DateAndTimeInserted = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataHistoryArticle", x => x.ArticleId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DC_NewsCategoryCR",
+                columns: table => new
+                {
+                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryNewsName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DC_NewsCategoryCR", x => x.CategoryID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GoldPriceModel",
                 columns: table => new
                 {
@@ -129,6 +172,12 @@ namespace DevTestModel.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_NewsApiResponse_NewsArticle_NewsArticleArticleId",
                 table: "NewsApiResponse");
+
+            migrationBuilder.DropTable(
+                name: "DataHistoryArticle");
+
+            migrationBuilder.DropTable(
+                name: "DC_NewsCategoryCR");
 
             migrationBuilder.DropTable(
                 name: "GoldPriceModel");

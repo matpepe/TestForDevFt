@@ -1,13 +1,29 @@
-﻿<h2>MENU</h2>
-@*<a asp-controller="Gold" asp-action="Index">GoldLIve</a>
-<br />
-<a asp-controller="Gold" asp-action="Index2">GoldLIve</a>
-<br />
-<a asp-controller="Gold" asp-action="ViewGoldFull">ViewGoldFull</a>*@
-<br />
-<a asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a>
-<br />
-<a asp-controller="DbExtension" asp-action="ViewAction">CryptoArticleActions</a>
-<br />
-<a asp-controller="CryptoArticle" asp-action="Index2">CryptoArticle</a>
-<br />
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="~/css/CryptoHome.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="text-center">
+        <strong><h2>MENU</h2></strong>
+    </div>
+    <div class="container mt-4">
+        <div class="text-center d-flex justify-content-center">
+            <a class="text-dark square-container" asp-area="" asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a>
+            <a class="text-dark square-container" asp-area="" asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a>
+            <a class="text-dark square-container" asp-area="" asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a>
+            <a class="text-dark square-container" asp-area="" asp-controller="Home" asp-action="Index">Link1</a>
+        </div>
+        <br />
+
+        <div class="text-center border-black p-4">
+            @*        <div>
+            <img src="~/Images/testGif1.gif.gif" alt="gif test" width="300" height="300" />
+            </div>*@
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XbRBObkzg+stKQfAK6Gqn2I4nDqc3x2MlLMf2Gv3Fcw=",
+  "Hash": "xe2VIi/BufA7bfog3uGsqAFmUpBciGXzrmS4dClpMnM=",
   "Source": "TestWebAppMulti",
   "BasePath": "_content/TestWebAppMulti",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TestWebAppMulti.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\CryptoHome.css",
+      "SourceId": "TestWebAppMulti",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\",
+      "BasePath": "_content/TestWebAppMulti",
+      "RelativePath": "css/CryptoHome.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CryptoHome.css"
     },
     {
       "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\site.css",

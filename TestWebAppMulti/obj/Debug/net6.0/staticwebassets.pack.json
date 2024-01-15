@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TestWebAppMulti.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\CryptoHome.css",
+      "PackagePath": "staticwebassets\\css\\CryptoHome.css"
+    },
+    {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -14,17 +14,21 @@ namespace DevTestModel.Data
         }
 
         public ApplicationDbContext()
-        {
+        { // remove
+
         }
 
+
+        #region DbSet
         //public DbSet<Product> Product { get; set; }
         public DbSet<NewsArticleModel> NewsArticle { get; set; }
         public DbSet<GoldPriceModel> GoldPriceModel { get; set; }
         public DbSet<NewsApiResponse> NewsApiResponse { get; set; }
         public DbSet<SourceInfoModel> SourceInfoModel { get; set; }
         public DbSet<DC_NewsCategoryCR> DC_NewsCategoryCR { get; set; }
+        public DbSet<DataHistoryArticle> DataHistoryArticle { get; set; }
 
-
+        #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -25,7 +25,19 @@ BEGIN
     );
 END
 GO
+SET IDENTITY_INSERT NewsApiResponse ON;
 
+IF NOT EXISTS (SELECT 1 FROM dbo.NewsApiResponse)
+BEGIN
+
+	INSERT INTO dbo.NewsApiResponse(ApiResponseId,Type,Message,Id,NewsArticleArticleId)
+	VALUES(1,200,N'https://min-api.cryptocompare.com/data/v2/news/?api_key=',1,1)
+
+END;
+GO
+
+SET IDENTITY_INSERT NewsApiResponse OFF;
+GO
 IF OBJECT_ID('PR_InsertHistory', 'P') IS NOT NULL
     DROP PROCEDURE PR_InsertHistory;
 GO
@@ -104,14 +116,28 @@ INNER JOIN
 ON 
 	SourceInfoModel.ID = NewsArticle.ID;
 
---DBCC CHECKIDENT('dbo.NewsArticle',RESEED,0);
+
+IF NOT EXISTS (SELECT 1 FROM dbo.DC_NewsCategoryCR)
+BEGIN
+	DBCC CHECKIDENT('dbo.DC_NewsCategoryCR',RESEED,0);
+
+
+    INSERT INTO dbo.DC_NewsCategoryCR (CategoryNewsName)
+    SELECT DISTINCT Categories
+    FROM dbo.NewsArticle;
+END;
+
+
+-- UPDATE 
+
+DBCC CHECKIDENT('dbo.DC_NewsCategoryCR',RESEED,0);
 --DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
 PRINT 'END'
 END;
 GO
 
 --DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
---EXEC PR_InsertHistory
+EXEC PR_InsertHistory
 
 GO
 
@@ -122,6 +148,10 @@ SELECT COUNT(*) as 'news' FROM dbo.NewsArticle
 SELECT * FROM dbo.NewsArticle
 SELECT COUNT(*) as 'history' FROM dbo.DataHistoryArticle
 SELECT * FROM dbo.DataHistoryArticle
+SELECT * FROM dbo.DC_NewsCategoryCR
+
+--DROP PROCEDURE PR_InsertHistory
+GO
 
 ROLLBACK TRAN; -- This can be changed to COMMIT TRAN; if you want to commit the changes
 

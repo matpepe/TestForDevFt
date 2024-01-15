@@ -10,6 +10,9 @@ namespace DevTestModel.Models.DC_models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryID { get; set; }
         public string? CategoryNewsName { get; set; }
+        public bool? Active { get; set; } = true;
 
+        [DisplayFormat()]
+        public DateTime? DateCreated { get; set; } = DateTime.Now;
     }
 }
