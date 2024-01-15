@@ -1,0 +1,10 @@
+﻿body {
+    background: url('../Images/IMG1/1080hdBC2.jpg') center center no-repeat fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.transparent-card-body {
+    background-color: rgba(255, 255, 255, 0.9);
+}

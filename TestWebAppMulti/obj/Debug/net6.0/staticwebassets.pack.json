@@ -5,8 +5,32 @@
       "PackagePath": "staticwebassets\\TestWebAppMulti.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\1080hdBC2.jpg",
+      "PackagePath": "staticwebassets\\Images\\IMG1\\1080hdBC2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\Cryptosh1.jpg",
+      "PackagePath": "staticwebassets\\Images\\IMG1\\Cryptosh1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\background001.jpg",
+      "PackagePath": "staticwebassets\\Images\\IMG1\\background001.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\ByCategorySite.css",
+      "PackagePath": "staticwebassets\\css\\ByCategorySite.css"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\CRMspacelab.css.css",
+      "PackagePath": "staticwebassets\\css\\CRMspacelab.css.css"
+    },
+    {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\CryptoHome.css",
       "PackagePath": "staticwebassets\\css\\CryptoHome.css"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\Menu.css",
+      "PackagePath": "staticwebassets\\css\\Menu.css"
     },
     {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\css\\site.css",
@@ -17,8 +41,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\js\\ScroolButtonScript.js",
+      "PackagePath": "staticwebassets\\js\\ScroolButtonScript.js"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\js\\saveArticleButtonScript.js",
+      "PackagePath": "staticwebassets\\js\\saveArticleButtonScript.js"
+    },
+    {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\js\\translation.js",
+      "PackagePath": "staticwebassets\\js\\translation.js"
     },
     {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\lib\\bootstrap\\LICENSE",

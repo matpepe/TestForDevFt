@@ -1,6 +1,8 @@
 ﻿using DevTestModel.Data;
 using DevTestModel.Models;
+using DevTestModel.Models.DC_models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -311,13 +313,33 @@ namespace TestWebAppMulti.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ByCategory()
+        public async Task<IActionResult> ByCategory(string selectedCategory, string categoryFilter)
         {
-            List<DataHistoryArticle> data = await _dbcontext.DataHistoryArticle.ToListAsync();
+            // Get the list of categories from the database
+            List<DC_NewsCategoryCR> categories = await _dbcontext.DC_NewsCategoryCR.ToListAsync();
+
+            // Pass the list of categories to the view using ViewBag
+            ViewBag.Categories = new SelectList(categories, "CategoryNewsName", "CategoryNewsName");
+
+            // Filter data based on the selected category and category filter
+            IQueryable<DataHistoryArticle> dataQuery = _dbcontext.DataHistoryArticle.AsQueryable();
+
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                dataQuery = dataQuery.Where(article => article.Categories == selectedCategory);
+            }
+
+            if (!string.IsNullOrEmpty(categoryFilter))
+            {
+                dataQuery = dataQuery.Where(article => article.Categories.Contains(categoryFilter));
+            }
+
+            List<DataHistoryArticle> data = await dataQuery.ToListAsync();
 
             return View(data);
         }
 
+        // https://resources.cryptocompare.com/news/27/22464260.jpeg replace(resources) blabla
         //ByCategory
 
         //public IActionResult ViewAction() { return View(); }

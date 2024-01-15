@@ -1,14 +1,46 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
+﻿<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Page Title</title>
-    <link rel="stylesheet" href="~/css/CryptoHome.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Menu.css" asp-append-version="true" />
+
+    <div class="title-bar">
+        <h1 style="color: #fff; font-size: 2em; border: 2px solid #000; padding: 10px;">
+            Crypto MENU
+        </h1>
+        <br />
+    </div>
+</head>
+
+<body>
+    <div id="idMENU">
+        <ul class="shadow-button-set">
+            <li><button><a asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a></button></li>
+            <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>
+            <li><button><a asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a></button></li>
+            <li><button><a asp-controller="Home" asp-action="Index">Link1</a></button></li>
+        </ul>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+@*<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MENU</title>
+    <link rel="stylesheet" href="~/css/CryptoHome.css" asp-append-version="false" />
+    <link rel="stylesheet" href="~/css/Menu.css" asp-append-version="true" />
 </head>
 <body>
     <div class="text-center">
-        <strong><h2>MENU</h2></strong>
+        <strong><h1>MENU</h1></strong>
     </div>
     <div class="container mt-4">
         <div class="text-center d-flex justify-content-center">
@@ -16,14 +48,8 @@
             <a class="text-dark square-container" asp-area="" asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a>
             <a class="text-dark square-container" asp-area="" asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a>
             <a class="text-dark square-container" asp-area="" asp-controller="Home" asp-action="Index">Link1</a>
+            <div class="animation start-home"></div>
         </div>
         <br />
-
-        <div class="text-center border-black p-4">
-            @*        <div>
-            <img src="~/Images/testGif1.gif.gif" alt="gif test" width="300" height="300" />
-            </div>*@
-        </div>
     </div>
-</body>
-</html>
+</body>*@
