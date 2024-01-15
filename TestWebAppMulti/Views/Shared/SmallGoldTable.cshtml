@@ -1,0 +1,33 @@
+﻿@using DevTestModel.Models
+@model IEnumerable<GoldPriceModel>
+
+<h2>Small Gold Table</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Active</th>
+            <th>Price</th>
+            <th>Date of Upload</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var goldPrice in Model.TakeLast(12))
+        {
+            <tr>
+                <td>@goldPrice.Active</td>
+                <td>@goldPrice.Price</td>
+                <td>@goldPrice.DateOfUpload.ToString()</td>
+                <td>@goldPrice.Timestamp</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<br />
+
+<br />
+<a class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">BackToIndex</a>
+<br />

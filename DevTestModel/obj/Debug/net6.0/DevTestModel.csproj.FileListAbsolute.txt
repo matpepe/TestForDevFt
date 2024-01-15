@@ -1,0 +1,14 @@
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\bin\Debug\net6.0\DevTestModel.deps.json
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\bin\Debug\net6.0\DevTestModel.runtimeconfig.json
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\bin\Debug\net6.0\DevTestModel.dll
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\bin\Debug\net6.0\DevTestModel.pdb
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.csproj.AssemblyReference.cache
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.AssemblyInfoInputs.cache
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.AssemblyInfo.cs
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.csproj.CoreCompileInputs.cache
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.dll
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\refint\DevTestModel.dll
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.pdb
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\DevTestModel.genruntimeconfig.cache
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\DevTestModel\obj\Debug\net6.0\ref\DevTestModel.dll

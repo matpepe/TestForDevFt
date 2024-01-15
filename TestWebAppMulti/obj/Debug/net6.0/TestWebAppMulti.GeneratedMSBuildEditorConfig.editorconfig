@@ -1,0 +1,69 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TestWebAppMulti
+build_property.RootNamespace = TestWebAppMulti
+build_property.ProjectDir = C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/CryptoArticle/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3J5cHRvQXJ0aWNsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/CryptoArticle/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3J5cHRvQXJ0aWNsZVxJbmRleDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/DbExtension/ViewAction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGJFeHRlbnNpb25cVmlld0FjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Gold/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29sZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Gold/ViewGoldFull.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29sZFxWaWV3R29sZEZ1bGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/SmallGoldTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNtYWxsR29sZFRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-rxazxy9u78

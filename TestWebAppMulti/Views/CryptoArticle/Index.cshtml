@@ -1,0 +1,123 @@
+﻿@using DevTestModel.Models;
+@model IEnumerable<NewsArticleModel>
+
+<body>
+    <h2>Latest Crypto News Articles</h2>
+    <div class="container mt-5">
+        <div class="card mt-4">
+            <div class="row">
+                <div class="card-body small">
+                    <h5 class="card-title">Actions</h5>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-block">Back to Menu</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body small">
+                    <h5 class="card-title">Language</h5>
+                    <div class="selectlanguage">
+                        <div>
+                            <label for="languageSelect">Select Language:</label>
+                            <select id="languageSelect">
+                                <option value="en">English</option>
+                                <option value="hr">Croatian</option>
+                            </select>
+                        </div>
+                        <div id="translations">
+                            <h1 data-en="Hello" data-hr="Bok"></h1>
+                            <p data-en="Latest Crypto News Articles" data-hr="Crypto Vjesti Vec Danas, pare lete"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div>
+        @foreach (var article in Model)
+        {
+            <div>
+                <h3>@article.Title</h3>
+                <p>@article.Body</p>
+                <p>Published on: @DateTimeOffset.FromUnixTimeSeconds(article.PublishedOn).ToString("yyyy-MM-dd HH:mm:ss")</p>
+
+                @if (!string.IsNullOrEmpty(article.ImageUrl))
+                {
+                    <img src="@article.ImageUrl" alt="Image from API req." />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+
+                @if (article.SourceInfo != null)
+                {
+                    <p>Source: @article.SourceInfo.Name</p>
+                    <img src="@article.SourceInfo.Img" alt="Source Image from API req." />
+                }
+                else
+                {
+                    <p>Source information not available</p>
+                }
+            </div>
+            <hr />
+        }
+    </div>
+
+    <script src="~/js/ScriptENHR.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+@*    <!-- Add an ID to the button -->
+    <a id="saveArticleButton" class="btn btn-success" asp-area="" asp-controller="CryptoArticle" asp-action="SaveArticle">SaveArticle</a>
+    <br />*@
+    <div class="LAST">
+        <div class="text-center">
+            <a href="#top" id="back-to-top" class="btn btn-dark back-to-top">Back to Top</a>
+            <br />
+            <br />
+            <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">BackToIndex</a>
+        </div>
+        <script>
+            // Smooth scrolling for the "Back to Top" link
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+
+                $('#back-to-top').click(function () {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 400);
+                    return false;
+                });
+            });
+        </script>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#saveArticleButton').on('click', function (e) {
+                e.preventDefault(); // Prevent the default behavior (following the link)
+
+                // Construct the URL directly or use data-* attribute
+                var url = '@Url.Action("SaveArticle", "CryptoArticle")';
+
+                // Make an AJAX request to the SaveArticle action
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    success: function (data) {
+                        // Handle success if needed
+                        console.log('Article saved successfully.');
+                    },
+                    error: function (error) {
+                        // Handle error if needed
+                        console.error('Error saving article:', error);
+                    }
+                });
+            });
+        }); // preventing redirection 
+    </script>
+</body>
