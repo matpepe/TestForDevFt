@@ -91,6 +91,8 @@ namespace DevTestModel.Migrations
 
                     b.HasKey("ArticleId");
 
+                    b.HasIndex("SourceInfoId");
+
                     b.ToTable("DataHistoryArticle");
                 });
 
@@ -110,6 +112,9 @@ namespace DevTestModel.Migrations
 
                     b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ShortCategoryName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryID");
 
@@ -173,17 +178,15 @@ namespace DevTestModel.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApiResponseId"), 1L, 1);
 
                     b.Property<string>("Id")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NewsArticleArticleId")
+                    b.Property<int?>("NewsArticleArticleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("ApiResponseId");
@@ -261,6 +264,9 @@ namespace DevTestModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SourceId"), 1L, 1);
 
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -276,16 +282,25 @@ namespace DevTestModel.Migrations
 
                     b.HasKey("SourceId");
 
+                    b.HasIndex("ArticleId");
+
                     b.ToTable("SourceInfoModel");
+                });
+
+            modelBuilder.Entity("DevTestModel.Models.DataHistoryArticle", b =>
+                {
+                    b.HasOne("DevTestModel.Models.SourceInfoModel", "SourceInfo")
+                        .WithMany()
+                        .HasForeignKey("SourceInfoId");
+
+                    b.Navigation("SourceInfo");
                 });
 
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>
                 {
                     b.HasOne("DevTestModel.Models.NewsArticleModel", "NewsArticle")
                         .WithMany()
-                        .HasForeignKey("NewsArticleArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NewsArticleArticleId");
 
                     b.Navigation("NewsArticle");
                 });
@@ -301,6 +316,17 @@ namespace DevTestModel.Migrations
                         .HasForeignKey("SourceInfoId");
 
                     b.Navigation("SourceInfo");
+                });
+
+            modelBuilder.Entity("DevTestModel.Models.SourceInfoModel", b =>
+                {
+                    b.HasOne("DevTestModel.Models.NewsArticleModel", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>

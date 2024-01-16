@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevTestModel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240115173832_Init2")]
-    partial class Init2
+    [Migration("20240116134343_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,6 +93,8 @@ namespace DevTestModel.Migrations
 
                     b.HasKey("ArticleId");
 
+                    b.HasIndex("SourceInfoId");
+
                     b.ToTable("DataHistoryArticle");
                 });
 
@@ -112,6 +114,9 @@ namespace DevTestModel.Migrations
 
                     b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ShortCategoryName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryID");
 
@@ -263,6 +268,9 @@ namespace DevTestModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SourceId"), 1L, 1);
 
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -278,7 +286,18 @@ namespace DevTestModel.Migrations
 
                     b.HasKey("SourceId");
 
+                    b.HasIndex("ArticleId");
+
                     b.ToTable("SourceInfoModel");
+                });
+
+            modelBuilder.Entity("DevTestModel.Models.DataHistoryArticle", b =>
+                {
+                    b.HasOne("DevTestModel.Models.SourceInfoModel", "SourceInfo")
+                        .WithMany()
+                        .HasForeignKey("SourceInfoId");
+
+                    b.Navigation("SourceInfo");
                 });
 
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>
@@ -303,6 +322,17 @@ namespace DevTestModel.Migrations
                         .HasForeignKey("SourceInfoId");
 
                     b.Navigation("SourceInfo");
+                });
+
+            modelBuilder.Entity("DevTestModel.Models.SourceInfoModel", b =>
+                {
+                    b.HasOne("DevTestModel.Models.NewsArticleModel", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>

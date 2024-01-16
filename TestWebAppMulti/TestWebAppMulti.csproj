@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\IMG1\" />
+    <Folder Include="wwwroot\Images\Gifs\" />
   </ItemGroup>
 
 </Project>

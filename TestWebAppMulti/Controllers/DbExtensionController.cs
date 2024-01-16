@@ -31,6 +31,10 @@ namespace TestWebAppMulti.Controllers
 
             ViewBag.CountNewsArticle = _dbcontext.NewsArticle.Count().ToString();
             ViewBag.CountDataHistoryArticle = _dbcontext.DataHistoryArticle.Count().ToString();
+            ViewBag.NewsApiResponse = _dbcontext.NewsApiResponse.Count().ToString();
+            ViewBag.DC_NewsCategoryCR = _dbcontext.DC_NewsCategoryCR.Count().ToString();
+            ViewBag.SourceInfoModel = _dbcontext.SourceInfoModel.Count().ToString();
+
             return View();
         }
 

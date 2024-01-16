@@ -10,40 +10,13 @@ namespace DevTestModel.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DataHistoryArticle",
-                columns: table => new
-                {
-                    ArticleId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublishedOn = table.Column<long>(type: "bigint", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Lang = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Upvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Downvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Categories = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SourceInfoId = table.Column<int>(type: "int", nullable: true),
-                    NewsApiResponseApiResponseId = table.Column<int>(type: "int", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: true),
-                    DateAndTimeInserted = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DataHistoryArticle", x => x.ArticleId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DC_NewsCategoryCR",
                 columns: table => new
                 {
                     CategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryNewsName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShortCategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -76,19 +49,31 @@ namespace DevTestModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SourceInfoModel",
+                name: "DataHistoryArticle",
                 columns: table => new
                 {
-                    SourceId = table.Column<int>(type: "int", nullable: false)
+                    ArticleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Source = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PublishedOn = table.Column<long>(type: "bigint", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Upvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Downvotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Categories = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SourceInfoId = table.Column<int>(type: "int", nullable: true),
+                    NewsApiResponseApiResponseId = table.Column<int>(type: "int", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: true),
+                    DateAndTimeInserted = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SourceInfoModel", x => x.SourceId);
+                    table.PrimaryKey("PK_DataHistoryArticle", x => x.ArticleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,12 +121,35 @@ namespace DevTestModel.Migrations
                         column: x => x.NewsApiResponseApiResponseId,
                         principalTable: "NewsApiResponse",
                         principalColumn: "ApiResponseId");
-                    table.ForeignKey(
-                        name: "FK_NewsArticle_SourceInfoModel_SourceInfoId",
-                        column: x => x.SourceInfoId,
-                        principalTable: "SourceInfoModel",
-                        principalColumn: "SourceId");
                 });
+
+            migrationBuilder.CreateTable(
+                name: "SourceInfoModel",
+                columns: table => new
+                {
+                    SourceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Source = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArticleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SourceInfoModel", x => x.SourceId);
+                    table.ForeignKey(
+                        name: "FK_SourceInfoModel_NewsArticle_ArticleId",
+                        column: x => x.ArticleId,
+                        principalTable: "NewsArticle",
+                        principalColumn: "ArticleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DataHistoryArticle_SourceInfoId",
+                table: "DataHistoryArticle",
+                column: "SourceInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NewsApiResponse_NewsArticleArticleId",
@@ -158,6 +166,18 @@ namespace DevTestModel.Migrations
                 table: "NewsArticle",
                 column: "SourceInfoId");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_SourceInfoModel_ArticleId",
+                table: "SourceInfoModel",
+                column: "ArticleId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_DataHistoryArticle_SourceInfoModel_SourceInfoId",
+                table: "DataHistoryArticle",
+                column: "SourceInfoId",
+                principalTable: "SourceInfoModel",
+                principalColumn: "SourceId");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_NewsApiResponse_NewsArticle_NewsArticleArticleId",
                 table: "NewsApiResponse",
@@ -165,10 +185,21 @@ namespace DevTestModel.Migrations
                 principalTable: "NewsArticle",
                 principalColumn: "ArticleId",
                 onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_NewsArticle_SourceInfoModel_SourceInfoId",
+                table: "NewsArticle",
+                column: "SourceInfoId",
+                principalTable: "SourceInfoModel",
+                principalColumn: "SourceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_NewsArticle_SourceInfoModel_SourceInfoId",
+                table: "NewsArticle");
+
             migrationBuilder.DropForeignKey(
                 name: "FK_NewsApiResponse_NewsArticle_NewsArticleArticleId",
                 table: "NewsApiResponse");
@@ -183,13 +214,13 @@ namespace DevTestModel.Migrations
                 name: "GoldPriceModel");
 
             migrationBuilder.DropTable(
+                name: "SourceInfoModel");
+
+            migrationBuilder.DropTable(
                 name: "NewsArticle");
 
             migrationBuilder.DropTable(
                 name: "NewsApiResponse");
-
-            migrationBuilder.DropTable(
-                name: "SourceInfoModel");
         }
     }
 }

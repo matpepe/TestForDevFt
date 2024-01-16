@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets\\TestWebAppMulti.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\Gifs\\bitcoin_useless.gif",
+      "PackagePath": "staticwebassets\\Images\\Gifs\\bitcoin_useless.gif"
+    },
+    {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\1080hdBC2.jpg",
       "PackagePath": "staticwebassets\\Images\\IMG1\\1080hdBC2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\BacgroundActions.jpg",
+      "PackagePath": "staticwebassets\\Images\\IMG1\\BacgroundActions.jpg"
     },
     {
       "Id": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\Cryptosh1.jpg",

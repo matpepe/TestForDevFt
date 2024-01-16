@@ -13,7 +13,10 @@ namespace DevTestModel.Models
 
         public string Id { get; set; }
 
+        [ForeignKey("Article")]
+        public int ArticleId { get; set; }  // Change the type to int
 
-
+        // Navigation property
+        public NewsArticleModel Article { get; set; }
     }
 }

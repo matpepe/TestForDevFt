@@ -19,10 +19,14 @@ namespace DevTestModel.Models
         public string Upvotes { get; set; }
         public string Downvotes { get; set; }
         public string Categories { get; set; }
+        [ForeignKey("SourceInfo")]
         public int? SourceInfoId { get; set; }
-        public int? NewsApiResponseApiResponseId { get; set; }
-        public bool? Active { get; set; }
-        public DateTime? DateAndTimeInserted { get; set; }
-    }
+        public SourceInfoModel SourceInfo { get; set; }
 
+        public int? NewsApiResponseApiResponseId { get; set; }
+        public bool? Active { get; set; } = true;
+
+        [DisplayFormat()]
+        public DateTime? DateAndTimeInserted { get; set; } = DateTime.Now;
+    }
 }

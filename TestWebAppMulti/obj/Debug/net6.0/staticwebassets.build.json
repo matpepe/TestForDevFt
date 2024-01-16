@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pEbwq1YqR5cdFvQjAKfmc4T6iZrWrUQktrhkjRimJtk=",
+  "Hash": "PVy6rMC339UA5qiowby53cUKWlF6oRPNQxeWDV8QBUM=",
   "Source": "TestWebAppMulti",
   "BasePath": "_content/TestWebAppMulti",
   "Mode": "Default",
@@ -153,6 +153,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\Gifs\\bitcoin_useless.gif",
+      "SourceId": "TestWebAppMulti",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\",
+      "BasePath": "_content/TestWebAppMulti",
+      "RelativePath": "Images/Gifs/bitcoin_useless.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Gifs\\bitcoin_useless.gif"
+    },
+    {
       "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\1080hdBC2.jpg",
       "SourceId": "TestWebAppMulti",
       "SourceType": "Discovered",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\IMG1\\1080hdBC2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\BacgroundActions.jpg",
+      "SourceId": "TestWebAppMulti",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\",
+      "BasePath": "_content/TestWebAppMulti",
+      "RelativePath": "Images/IMG1/BacgroundActions.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\IMG1\\BacgroundActions.jpg"
     },
     {
       "Identity": "C:\\Users\\Mat\\Desktop\\RepoProj\\testAPP\\TestForDevFt\\TestWebAppMulti\\wwwroot\\Images\\IMG1\\background001.jpg",

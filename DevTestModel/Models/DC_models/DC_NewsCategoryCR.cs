@@ -9,7 +9,11 @@ namespace DevTestModel.Models.DC_models
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryID { get; set; }
+        //public NewsArticleModel Category { get; set; }
+        //[Required]
+        //[ForeignKey(nameof(Category))]
         public string? CategoryNewsName { get; set; }
+        public string? ShortCategoryName { get; set; }
         public bool? Active { get; set; } = true;
 
         [DisplayFormat()]

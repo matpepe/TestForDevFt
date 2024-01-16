@@ -2,7 +2,6 @@
 @model IEnumerable<DataHistoryArticle>
 <head>
     <title>Crypto News Form</title>
-    <div>
         <script src="~/js/translation.js"></script>
         <script src="~/js/saveArticleButtonScript.js"></script>
         <script src="~/js/ScroolButtonScript.js"></script>
@@ -10,7 +9,6 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
         <link rel="stylesheet" href="~/css/ByCategorySite.css" asp-append-version="true" />
-    </div>
 </head>
 <body>
     <div class="background-image">
@@ -18,10 +16,12 @@
             <div class="title-bar align-content-center">
                 <h1 style="color: #fff;">Crypto News Form</h1>
             </div>
+            @*??????????????ACTIONS????????????*@
+
             <div class="container mt-4">
                 <h5 class="text-start" style="color: #fff;">Actions</h5>
                 <div class="row mt-4">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-body transparent-card-body">
                                 <h5 class="card-title">Filter by Category</h5>
@@ -35,37 +35,40 @@
                                         <label for="categoryFilter">Filter by Category:</label>
                                         <input type="text" name="categoryFilter" id="categoryFilter" class="form-control" />
                                     </div>
-                                    <br />
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-primary small">Filter</button>
-                                    </div>
-                                    <br />
-                                    <div class="col">
-                                        <button class="btn btn-dark small" type="reset" value="null">Clear</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary small">Filter</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-dark small" type="reset" value="null">Clear</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <div id="google_translate_element"></div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <a class="btn btn-primary btn-sm" asp-area="" asp-controller="Home" asp-action="Index">Back To Menu</a>
                             </div>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <div class="card small">
-                            <a class="btn btn-primary btn-sm" asp-area="" asp-controller="Home" asp-action="Index">Back To Menu</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            @*????????????????????????????????????*@
+
+            <br />
+        </div>
+        <br />
         <div>
             @foreach (var article in Model)
             {
@@ -90,7 +93,7 @@
                                 <h5 class="card-title">@article.Title</h5>
                                 <p class="card-text">@article.Body</p>
                                 <p class="card-text"><small class="text-muted">Published on: @article.DateAndTimeInserted.ToString()</small></p>
-                                <p>image Source: @article.ImageUrl </p>
+                                <p>Image Source: <a href="@article.Url" target="_blank">@article.Url</a></p>
                                 <p>Upvotes: @article.Upvotes.ToString()</p>
                             </div>
                         </div>
@@ -106,6 +109,8 @@
                 <br />
                 <br />
                 <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">BackToIndex</a>
+                <br />
+                <br />
             </div>
         </div>
     </div>

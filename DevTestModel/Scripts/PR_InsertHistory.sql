@@ -1,6 +1,7 @@
 ﻿USE TestDevALL;
 ---- procedure insertinto WORKING 
 BEGIN TRAN
+
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'DataHistoryArticle')
 BEGIN
     CREATE TABLE DataHistoryArticle
@@ -24,20 +25,7 @@ BEGIN
 	DateAndTimeInserted smalldatetime NULL
     );
 END
-GO
-SET IDENTITY_INSERT NewsApiResponse ON;
 
-IF NOT EXISTS (SELECT 1 FROM dbo.NewsApiResponse)
-BEGIN
-
-	INSERT INTO dbo.NewsApiResponse(ApiResponseId,Type,Message,Id,NewsArticleArticleId)
-	VALUES(1,200,N'https://min-api.cryptocompare.com/data/v2/news/?api_key=',1,1)
-
-END;
-GO
-
-SET IDENTITY_INSERT NewsApiResponse OFF;
-GO
 IF OBJECT_ID('PR_InsertHistory', 'P') IS NOT NULL
     DROP PROCEDURE PR_InsertHistory;
 GO
@@ -46,7 +34,6 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
--- Use the MERGE statement to insert or update records in DataHistoryArticle
 MERGE INTO dbo.DataHistoryArticle AS target
 USING dbo.NewsArticle AS source
 ON target.Id = source.Id 
@@ -66,7 +53,7 @@ WHEN MATCHED THEN
         target.Categories = source.Categories,
         target.SourceInfoId = source.SourceInfoId,
         target.NewsApiResponseApiResponseId = source.NewsApiResponseApiResponseId,
-        target.Active = 1, -- Assuming Active should be set to 1
+        target.Active = 1, 
         target.DateAndTimeInserted = GETDATE()
 WHEN NOT MATCHED THEN
     INSERT (
@@ -102,7 +89,7 @@ WHEN NOT MATCHED THEN
         source.Categories,
         source.SourceInfoId,
         source.NewsApiResponseApiResponseId,
-        1, -- Assuming Active should be set to 1
+        1, 
         GETDATE()
     );
 
@@ -122,7 +109,7 @@ BEGIN
 	DBCC CHECKIDENT('dbo.DC_NewsCategoryCR',RESEED,0);
 
 
-    INSERT INTO dbo.DC_NewsCategoryCR (CategoryNewsName)
+    INSERT INTO dbo.DC_NewsCategoryCR(CategoryNewsName)
     SELECT DISTINCT Categories
     FROM dbo.NewsArticle;
 END;
@@ -131,32 +118,55 @@ END;
 -- UPDATE 
 
 DBCC CHECKIDENT('dbo.DC_NewsCategoryCR',RESEED,0);
---DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
 PRINT 'END'
 END;
 GO
 
---DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
 EXEC PR_InsertHistory
+GO
+SET IDENTITY_INSERT NewsApiResponse ON;
+
+IF NOT EXISTS (SELECT 1 FROM dbo.NewsApiResponse)
+BEGIN
+
+	INSERT INTO dbo.NewsApiResponse(ApiResponseId,Type,Message,Id,NewsArticleArticleId)
+	VALUES(1,200,N'https://min-api.cryptocompare.com/data/v2/news/?api_key=',1,NULL)
+
+END;
+GO
+
+SET IDENTITY_INSERT NewsApiResponse OFF;
+GO
+
+SELECT COUNT(*) as 'infoCOunt','source' FROM dbo.SourceInfoModel
+UNION ALL		
+SELECT COUNT(*) as 'infoCOunt','news' FROM dbo.NewsArticle
+UNION ALL		
+SELECT COUNT(*) as 'infoCOunt','history' FROM dbo.DataHistoryArticle
+UNION ALL		
+SELECT COUNT(*) as 'infoCOunt','_NewsCategoryCR' FROM dbo.DC_NewsCategoryCR
+UNION ALL		
+SELECT COUNT(*) as 'infoCOunt','NewsApiResponse' FROM dbo.NewsApiResponse
+
+
+--SELECT COUNT(*) as 'source' FROM dbo.SourceInfoModel
+--SELECT * FROM dbo.SourceInfoModel
+--SELECT COUNT(*) as 'news' FROM dbo.NewsArticle
+--SELECT * FROM dbo.NewsArticle
+--SELECT COUNT(*) as 'history' FROM dbo.DataHistoryArticle
+--SELECT * FROM dbo.DataHistoryArticle
+--SELECT * FROM dbo.DC_NewsCategoryCR
+--SELECT * FROM dbo.NewsApiResponse
 
 GO
 
-
-SELECT COUNT(*) as 'source' FROM dbo.SourceInfoModel
-SELECT * FROM dbo.SourceInfoModel
-SELECT COUNT(*) as 'news' FROM dbo.NewsArticle
-SELECT * FROM dbo.NewsArticle
-SELECT COUNT(*) as 'history' FROM dbo.DataHistoryArticle
-SELECT * FROM dbo.DataHistoryArticle
-SELECT * FROM dbo.DC_NewsCategoryCR
-
---DROP PROCEDURE PR_InsertHistory
-GO
-
-ROLLBACK TRAN; -- This can be changed to COMMIT TRAN; if you want to commit the changes
-
+ROLLBACK TRAN; 
+--COMMIT TRAN
 /*
 
+--DROP PROCEDURE PR_InsertHistory
+--DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
+--DBCC CHECKIDENT('dbo.DataHistoryArticle',RESEED,0);
 
 -- Display the current state of DataHistoryArticle before the operation
 --SELECT 'DataHistoryArticle Before Operation' AS 'INFO', * 

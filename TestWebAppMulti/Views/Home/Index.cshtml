@@ -10,20 +10,104 @@
         <br />
     </div>
 </head>
-
 <body>
+    <br />
     <div id="idMENU">
-        <ul class="shadow-button-set">
-            <li><button><a asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a></button></li>
-            <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>
-            <li><button><a asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a></button></li>
-            <li><button><a asp-controller="Home" asp-action="Index">Link1</a></button></li>
-        </ul>
+        <div class="col">
+            <ul class="shadow-button-set">
+                <li><button><a asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a></button></li>
+                <li><button><a asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a></button></li>
+                <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>
+                <li><button><a asp-controller="Home" asp-action="Index">Link1</a></button></li>
+                <li>
+                    <button id="myButtonGif">
+                        <a asp-controller="Home" asp-action="Index">Link2</a>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <div id="loadingGif">
+                <br />
+                <br />
+                <table>
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <tr>
+                            @for (int j = 0; j < 5; j++)
+                            {
+                                <td><img src="~/Images/Gifs/bitcoin_useless.gif" alt="Loading..."></td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#myButtonGif").on("click", function (e) {
+            // Prevent the default action of the anchor tag
+            e.preventDefault();
+
+            // Show the loading GIF
+            $("#loadingGif").show();
+
+            // Get the URL from the anchor tag
+            var url = $(this).find("a").attr("href");
+
+            // Perform your desired action or navigation after a delay (e.g., 2 seconds)
+            setTimeout(function () {
+                window.location.href = url;
+            }, 2000);
+        });
+    });
+</script>
+
+<style>
+    body {
+        background: url('../Images/IMG1/BacgroundActions.jpg') center center no-repeat fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+    }
+
+    .transparent-card-body {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    #idMENU {
+        display: flex;
+        justify-content: space-between;
+        width: 60%; /* Adjust the width as needed */
+    }
+
+    .col {
+        flex: 1;
+    }
+
+    .shadow-button-set {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 10px;
+    }
 
 
+    #loadingGif {
+        display: none;
+    }
+
+        #loadingGif img {
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
+        }
+</style>
 
 
 
