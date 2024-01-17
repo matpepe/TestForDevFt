@@ -24,20 +24,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3J5cHRvQXJ0aWNsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/CryptoArticle/Index2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3J5cHRvQXJ0aWNsZVxJbmRleDIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/DbExtension/ViewAction.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGJFeHRlbnNpb25cVmlld0FjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Gold/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29sZFxJbmRleC5jc2h0bWw=
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/EthScan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXRoU2NhblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Gold/ViewGoldFull.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29sZFxWaWV3R29sZEZ1bGwuY3NodG1s
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/EthScan/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXRoU2NhblxJbmRleDIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Home/Index.cshtml]
@@ -50,10 +46,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/SmallGoldTable.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNtYWxsR29sZFRhYmxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/Shared/_ValidationScriptsPartial.cshtml]

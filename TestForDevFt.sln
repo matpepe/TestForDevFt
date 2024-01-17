@@ -11,8 +11,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfoDir", "InfoDir", "{26E9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infoSecret", "infoSecret", "{17CD991F-8BE7-4C73-974B-D04696DB0B46}"
 	ProjectSection(SolutionItems) = preProject
+		DevTestModel\Scripts\InstallPackages.ps1 = DevTestModel\Scripts\InstallPackages.ps1
 		Secrets.txt = Secrets.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotInUse", "NotInUse", "{8045BD9D-E0D5-4084-B546-D62127159BDC}"
+	ProjectSection(SolutionItems) = preProject
+		TestWebAppMulti\Controllers\GoldController .cs = TestWebAppMulti\Controllers\GoldController .cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GoldView", "GoldView", "{178E6B41-7F78-4B08-AC74-B98739847E5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{17CD991F-8BE7-4C73-974B-D04696DB0B46} = {26E9099B-585D-4AB7-B4B2-DB28665019BE}
+		{8045BD9D-E0D5-4084-B546-D62127159BDC} = {26E9099B-585D-4AB7-B4B2-DB28665019BE}
+		{178E6B41-7F78-4B08-AC74-B98739847E5D} = {8045BD9D-E0D5-4084-B546-D62127159BDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8640075-9D47-44C3-AAF2-9DF5F59BCA1B}

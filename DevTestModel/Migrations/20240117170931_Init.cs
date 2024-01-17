@@ -26,29 +26,6 @@ namespace DevTestModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GoldPriceModel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Timestamp = table.Column<long>(type: "bigint", nullable: false),
-                    Metal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Ask = table.Column<double>(type: "float", nullable: false),
-                    Bid = table.Column<double>(type: "float", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    PriceGram22K = table.Column<double>(type: "float", nullable: false),
-                    CH = table.Column<double>(type: "float", nullable: false),
-                    CHP = table.Column<double>(type: "float", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: true),
-                    DateOfUpload = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GoldPriceModel", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DataHistoryArticle",
                 columns: table => new
                 {
@@ -82,10 +59,10 @@ namespace DevTestModel.Migrations
                 {
                     ApiResponseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<int>(type: "int", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NewsArticleArticleId = table.Column<int>(type: "int", nullable: false)
+                    Type = table.Column<int>(type: "int", nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NewsArticleArticleId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -183,8 +160,7 @@ namespace DevTestModel.Migrations
                 table: "NewsApiResponse",
                 column: "NewsArticleArticleId",
                 principalTable: "NewsArticle",
-                principalColumn: "ArticleId",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "ArticleId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_NewsArticle_SourceInfoModel_SourceInfoId",
@@ -209,9 +185,6 @@ namespace DevTestModel.Migrations
 
             migrationBuilder.DropTable(
                 name: "DC_NewsCategoryCR");
-
-            migrationBuilder.DropTable(
-                name: "GoldPriceModel");
 
             migrationBuilder.DropTable(
                 name: "SourceInfoModel");

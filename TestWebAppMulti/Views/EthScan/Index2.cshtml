@@ -1,0 +1,51 @@
+﻿@model DevTestModel.Models.ScanModels.EthScanModelOne
+
+<h1>Internal Transactions</h1>
+
+<p>ModelStatus: @Model.Status.ToString() </p>
+<p>ModelMessageJSON: @Model.Message.ToString() </p>
+
+<form method="post" asp-action="Index">
+    <label for="apiTestAddress">API Test Address:</label>
+    <input type="text" name="apiTestAddress" required />
+
+    <button type="submit">Submit</button>
+</form>
+
+<table border="1" class="table-sm">
+    <tr>
+        <th>Block Number</th>
+        <th>Timestamp</th>
+        <th>Hash</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Value</th>
+        <th>Contract Address</th>
+        <th>Input</th>
+        <th>Type</th>
+        <th>Gas</th>
+        <th>Gas Used</th>
+        <th>Trace ID</th>
+        <th>Is Error</th>
+        <th>Error Code</th>
+    </tr>
+    @foreach (var transaction in Model.Result)
+    {
+        <tr>
+            <td>@transaction.BlockNumber</td>
+            <td>@transaction.TimeStamp</td>
+            <td>@transaction.Hash</td>
+            <td>@transaction.From</td>
+            <td>@transaction.To</td>
+            <td>@transaction.Value</td>
+            <td>@transaction.ContractAddress</td>
+            <td>@transaction.Input</td>
+            <td>@transaction.Type</td>
+            <td>@transaction.Gas</td>
+            <td>@transaction.GasUsed</td>
+            <td>@transaction.TraceId</td>
+            <td>@transaction.IsError</td>
+            <td>@transaction.ErrCode</td>
+        </tr>
+    }
+</table>

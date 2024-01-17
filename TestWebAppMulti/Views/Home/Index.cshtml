@@ -18,7 +18,8 @@
                 <li><button><a asp-controller="CryptoArticle" asp-action="Index">CryptoArticleLive</a></button></li>
                 <li><button><a asp-controller="CryptoArticle" asp-action="ByCategory">Category View</a></button></li>
                 <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>
-                <li><button><a asp-controller="Home" asp-action="Index">Link1</a></button></li>
+              @*<li><button><a asp-controller="Home" asp-action="Privacy">NULL</a></button></li>*@
+                <li><button><a asp-controller="EthScan" asp-action="Index">EthHashTables</a></button></li>
                 <li>
                     <button id="myButtonGif">
                         <a asp-controller="Home" asp-action="Index">Link2</a>
@@ -51,7 +52,6 @@
 <script>
     $(document).ready(function () {
         $("#myButtonGif").on("click", function (e) {
-            // Prevent the default action of the anchor tag
             e.preventDefault();
 
             // Show the loading GIF
@@ -60,7 +60,6 @@
             // Get the URL from the anchor tag
             var url = $(this).find("a").attr("href");
 
-            // Perform your desired action or navigation after a delay (e.g., 2 seconds)
             setTimeout(function () {
                 window.location.href = url;
             }, 2000);

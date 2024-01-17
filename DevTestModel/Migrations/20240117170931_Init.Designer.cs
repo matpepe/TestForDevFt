@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevTestModel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240116134343_Init")]
+    [Migration("20240117170931_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,54 +123,6 @@ namespace DevTestModel.Migrations
                     b.ToTable("DC_NewsCategoryCR");
                 });
 
-            modelBuilder.Entity("DevTestModel.Models.GoldPriceModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool?>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("Ask")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Bid")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CH")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CHP")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Currency")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateOfUpload")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Metal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PriceGram22K")
-                        .HasColumnType("float");
-
-                    b.Property<long>("Timestamp")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GoldPriceModel");
-                });
-
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>
                 {
                     b.Property<int>("ApiResponseId")
@@ -180,17 +132,15 @@ namespace DevTestModel.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ApiResponseId"), 1L, 1);
 
                     b.Property<string>("Id")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NewsArticleArticleId")
+                    b.Property<int?>("NewsArticleArticleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("ApiResponseId");
@@ -304,9 +254,7 @@ namespace DevTestModel.Migrations
                 {
                     b.HasOne("DevTestModel.Models.NewsArticleModel", "NewsArticle")
                         .WithMany()
-                        .HasForeignKey("NewsArticleArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NewsArticleArticleId");
 
                     b.Navigation("NewsArticle");
                 });

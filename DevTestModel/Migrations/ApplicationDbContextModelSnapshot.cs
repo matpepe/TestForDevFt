@@ -121,54 +121,6 @@ namespace DevTestModel.Migrations
                     b.ToTable("DC_NewsCategoryCR");
                 });
 
-            modelBuilder.Entity("DevTestModel.Models.GoldPriceModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool?>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("Ask")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Bid")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CH")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CHP")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Currency")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateOfUpload")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Metal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PriceGram22K")
-                        .HasColumnType("float");
-
-                    b.Property<long>("Timestamp")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GoldPriceModel");
-                });
-
             modelBuilder.Entity("DevTestModel.Models.NewsApiResponse", b =>
                 {
                     b.Property<int>("ApiResponseId")

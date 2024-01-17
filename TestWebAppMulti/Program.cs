@@ -1,4 +1,5 @@
 using DevTestModel.Data;
+using DevTestModel.Models.ScanModels;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -25,7 +26,7 @@ namespace TestWebAppMulti
             builder.Services.AddControllersWithViews();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession();
-
+            builder.Services.AddScoped<EtherscanService>();
 
             var app = builder.Build();
 

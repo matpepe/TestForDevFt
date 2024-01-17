@@ -18,10 +18,7 @@ namespace TestWebAppMulti.Controllers
             //SqlConnectionString = "Server=DESKTOP-N89DPOR\\SQLEXPRESS;Database=TestDevALL;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
         }
 
-        public ActionResult Index() { return View(); } // po DC_NewsCategoryCR
-        // viewv sa top 10 po kategoriji iz DataHistoryArticle
-        // napraviti live translation 
-
+        public ActionResult Index() { return View(); }
 
         [HttpGet]
         public async Task<IActionResult> ViewAction()
@@ -37,18 +34,5 @@ namespace TestWebAppMulti.Controllers
 
             return View();
         }
-
-
-        public async Task<IActionResult> TranslateEUHR()
-        {
-            return View();
-        } // na cryartController? 
-
-        //napraviti zaseban web API proiject za crypto news 
-        // testovi project
-        // api za eng/hr translate realtime session tranlation in web using minimal docs 
-        // json subobject extraction (dbo.SourceInfoModel
-
-
     }
 }
