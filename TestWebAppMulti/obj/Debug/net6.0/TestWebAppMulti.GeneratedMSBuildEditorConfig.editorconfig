@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/AutoMail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b01haWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mat/Desktop/RepoProj/testAPP/TestForDevFt/TestWebAppMulti/Views/CryptoArticle/ByCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3J5cHRvQXJ0aWNsZVxCeUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

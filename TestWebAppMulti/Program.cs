@@ -1,4 +1,5 @@
 using DevTestModel.Data;
+using DevTestModel.Models;
 using DevTestModel.Models.ScanModels;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,11 @@ namespace TestWebAppMulti
             builder.Services.AddSession();
             builder.Services.AddScoped<EtherscanService>();
 
+            builder.Services.AddScoped<MailService>(provider =>
+            {
+                var apiUrl = builder.Configuration["MailApiUrl"]; // Specify your Mail API URL
+                return new MailService(apiUrl);
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

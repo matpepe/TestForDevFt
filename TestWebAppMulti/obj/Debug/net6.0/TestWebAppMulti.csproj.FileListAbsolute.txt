@@ -80,3 +80,4 @@ C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\obj\Debug\net
 C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\obj\Debug\net6.0\TestWebAppMulti.pdb
 C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\obj\Debug\net6.0\TestWebAppMulti.genruntimeconfig.cache
 C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\obj\Debug\net6.0\ref\TestWebAppMulti.dll
+C:\Users\Mat\Desktop\RepoProj\testAPP\TestForDevFt\TestWebAppMulti\bin\Debug\net6.0\SmorcIRL.TempMail.dll

@@ -1,0 +1,75 @@
+﻿@model DevTestModel.Models.AccountInfoModel
+
+<h1>Mail Service Operations</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p class="text-success">@ViewBag.Message</p>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <p class="text-danger">@ViewBag.ErrorMessage</p>
+}
+
+<!-- Registration Form -->
+<h2>Register</h2>
+<form method="post" asp-action="Register">
+    <label for="email">Email:</label>
+    <input type="text" name="email" required />
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" name="password" required />
+    <button type="submit">Register</button>
+</form>
+
+<hr />
+
+<!-- Delete Account Form -->
+<h2>Delete Account</h2>
+<form method="post" asp-action="DeleteAccount">
+    <button type="submit">Delete Account</button>
+</form>
+
+<hr />
+
+<!-- Get Account Info -->
+<h2>Account Info</h2>
+@if (Model != null)
+{
+    <dl>
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+        <dt>Creation Date:</dt>
+        <dd>@Model.Created</dd>
+        <dt>Message Quota:</dt>
+        <dd>@Model.Quota</dd>
+    </dl>
+}
+else
+{
+    <p>No account info available.</p>
+}
+<br />
+
+<h2>Available Domains</h2>
+
+<ul>
+    @if (ViewBag.Domains != null)
+    {
+        @foreach (var domain in ViewBag.Domains)
+        {
+            <li>@domain.Id</li>
+            <li>@domain.Domain</li>
+            <li>@domain.IsActive</li>
+            <li>@domain.IsPrivate</li>
+            <li>@domain.CreatedAt</li>
+        }
+    }
+    else
+    {
+        <li>No domains available.</li>
+    }
+</ul>
+<br />
+<a class="btn btn-primary btn-sm" asp-area="" asp-controller="Home" asp-action="Index">Back To Menu</a>

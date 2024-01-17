@@ -75,6 +75,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "SmorcIRL.TempMail": {
+              "target": "Package",
+              "version": "[2.0.2, )"
             }
           },
           "imports": [
