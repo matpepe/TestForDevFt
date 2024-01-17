@@ -1,0 +1,87 @@
+﻿@model DevTestModel.Models.MailModels.AccountInfoModel
+
+@{
+    ViewData["Title"] = "Mail API Interaction";
+}
+
+<h2>Account Information</h2>
+
+@if (Model != null)
+{
+    <p>Email: @Model.Email</p>
+    <p>Created: @Model.Created</p>
+    <p>Name: @Model.Name</p>
+    <p>Quota: @Model.Quota</p>
+}
+else
+{
+    <p>No account information available</p>
+}
+<br />
+<h2>Mail API Interaction</h2>
+<br />
+<form method="post" asp-action="Index">
+    <label>Action:</label>
+    <select name="action">
+        <option value="register">Register</option>
+        <option value="getavailabledomains">Get Available Domains</option>
+        <option value="getfirstavailabledomainname">Get First Available Domain Name</option>
+        <option value="generateaccount">Generate Account</option>
+        <option value="getaccountinfo">Get Account Info</option>
+        <option value="deleteaccount">Delete Account</option>
+    </select>
+
+    <br /><br />
+
+    <label>Email:</label>
+    <input type="text" name="email" />
+
+    <br /><br />
+
+    <label>Password:</label>
+    <input type="password" name="password" />
+
+    <br /><br />
+
+    <label>Optional Password:</label>
+    <input type="password" name="optionalPassword" />
+
+    <br /><br />
+
+    <input type="submit" value="Submit" />
+</form>
+
+@if (ViewData.ContainsKey("Message"))
+{
+    <p style="color: green;">@ViewData["Message"]</p>
+}
+
+@if (ViewData.ContainsKey("ErrorMessage"))
+{
+    <p style="color: red;">@ViewData["ErrorMessage"]</p>
+}
+
+
+
+@{
+    var domains = ViewBag.AvailableDomains as string[];
+}
+
+<h2>Available Domains</h2>
+
+@if (domains != null && domains.Length > 0)
+{
+    foreach (var domain in domains)
+    {
+        <p>@domain.ToString()</p>
+    }
+}
+else
+{
+    <p>No available domains</p>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <p style="color: red;">@ViewBag.ErrorMessage</p>
+}

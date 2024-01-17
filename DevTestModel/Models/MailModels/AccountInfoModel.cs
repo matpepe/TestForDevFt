@@ -1,4 +1,4 @@
-﻿namespace DevTestModel.Models
+﻿namespace DevTestModel.Models.MailModels
 {
     public class AccountInfoModel
     {

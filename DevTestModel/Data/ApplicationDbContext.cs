@@ -24,7 +24,7 @@ namespace DevTestModel.Data
         public DbSet<DC_NewsCategoryCR> DC_NewsCategoryCR { get; set; }
         public DbSet<DataHistoryArticle> DataHistoryArticle { get; set; }
         ////public DbSet<MainViewWrapperModel> MainViewWrapperModel { get; set; } //remove
-
+        //public DbSet<SourceInfoModel> SourceInfoModel { get; set; }
 
         #endregion
 
