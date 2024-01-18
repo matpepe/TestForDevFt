@@ -2,7 +2,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/Menu.css" asp-append-version="true" />
-
     <div class="title-bar">
         <h1 style="color: #fff; font-size: 2em; border: 2px solid #000; padding: 10px;">
             Crypto MENU
@@ -20,6 +19,7 @@
                 <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>
               @*<li><button><a asp-controller="Home" asp-action="Privacy">NULL</a></button></li>*@
                 <li><button><a asp-controller="EthScan" asp-action="Index">EthHashTables</a></button></li>
+                <li><button><a asp-controller="Home" asp-action="MenuRandom">MenuRandom</a></button></li>
                 <li>
                     <button id="myButtonGif">
                         <a asp-controller="Home" asp-action="Index">Link2</a>
@@ -44,8 +44,12 @@
                 </table>
             </div>
            @* <li><button><a asp-controller="DbExtension" asp-action="ViewAction">CRM CryptoArticleActions</a></button></li>*@
-            <li><button class="btn-outline-info"><a asp-controller="Mail" asp-action="Index">Mail</a></button></li>
         </div>
+@*        <div class="col">
+            <div class="shadow-button-set">
+                <li><button><a asp-controller="Home" asp-action="MenuRandom">MenuRandom</a></button></li>
+            </div>
+        </div>*@
     </div>
 </body>
 

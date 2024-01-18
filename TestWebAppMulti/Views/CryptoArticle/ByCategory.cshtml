@@ -30,11 +30,12 @@
                                         <label for="categoryDropdown">Select Category:</label>
                                         @Html.DropDownList("selectedCategory", (SelectList)ViewBag.Categories, "All Categories", new { id = "categoryDropdown", @class = "form-control" })
                                     </div>
-
+                                    <br />
                                     <div class="form-group">
                                         <label for="categoryFilter">Filter by Category:</label>
                                         <input type="text" name="categoryFilter" id="categoryFilter" class="form-control" />
                                     </div>
+                                    <br />
                                     <div class="row">
                                         <div class="col">
                                             <button type="submit" class="btn btn-primary small">Filter</button>
@@ -51,7 +52,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="google_translate_element"></div>
-                                <br />
                                 <br />
                                 <br />
                                 <br />
@@ -114,9 +114,55 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <br />
+
+    <style>
+        /* Custom styles for the Google Translate button */
+        #google_translate_element {
+            display: inline-block;
+            position: relative;
+        }
+
+        .goog-te-gadget-icon {
+            display: none;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: #4285f4; /* Google blue color */
+            color: #ffffff; /* Text color */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .flag-icon {
+            width: 24px; /* Adjust the width of the flag icon */
+            height: 24px; /* Adjust the height of the flag icon */
+            margin-right: 5px; /* Adjust the margin between the icon and text */
+        }
+
+        /* Styling the dropdown menu */
+        .goog-te-menu-value {
+            color: #000000; /* Text color in the dropdown menu */
+        }
+
+        .goog-te-menu-frame.skiptranslate {
+            display: none !important;
+        }
+
+        /* Optional: Adjust the position of the dropdown menu */
+        .goog-te-menu {
+            margin-top: 40px;
+        }
+    </style>
+
 </body>
+
 
 @*<style>
     body {

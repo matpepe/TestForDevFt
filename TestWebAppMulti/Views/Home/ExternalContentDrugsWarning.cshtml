@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null; // Assuming you don't want to use a layout for this specific view
+}
+
+<head>
+        <meta charset="utf-8" />
+        <title>External Content</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @* Add your stylesheets and other head elements here *@
+</head>
+<body>
+        <br />
+        <hr />
+        <div class="isolated-div">
+            @Html.Raw(ViewBag.ExternalContent2)
+            <div class="text-center d-grid gap-2">
+                <a class="btn btn-lg btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Back to Index</a>
+            </div>
+        </div>
+        <br />
+
+        <br />
+    <br />
+    <hr />
+    <div class="isolated-div">
+        @Html.Raw(ViewBag.ExternalContent)
+        <div class="text-center d-grid gap-2">
+            <a class="btn btn-lg btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Back to Index</a>
+        </div>
+    </div>
+    <br />
+@*    <div class="isolated-div">
+        @Html.Raw(ViewBag.ExternalContent3)
+        <div class="text-center d-grid gap-2">
+            <a class="btn btn-lg btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Back to Index</a>
+        </div>
+    </div>
+    <br />*@
+</body>
+
+<style>
+    .isolated-div {
+        border: 1px solid #ccc; /* Add a border to each div */
+        padding: 10px; /* Add internal padding to each div */
+        margin-bottom: 20px; /* Add margin to the bottom of each div */
+        width: 80%; 
+        margin: 0 auto;
+    }
+</style>
+
+@*    <br />
+        <div>
+            @Html.Raw(ViewBag.ExternalContent2)
+        </div>
+        <br />
+        <div class="text-center d-grid gap-2">
+            <a class="btn btn-lg btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Back to Index</a>
+        </div>
+        <br />
+        <div>
+            @Html.Raw(ViewBag.ExternalContent3)
+        </div>
+        <br />
+        <div class="text-center d-grid gap-2">
+            <a class="btn btn-lg btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Back to Index</a>
+        </div>
+        <br />*@

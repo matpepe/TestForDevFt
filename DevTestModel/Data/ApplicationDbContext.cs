@@ -3,7 +3,6 @@ using DevTestModel.Models;
 using DevTestModel.Models.DC_models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace DevTestModel.Data
 {
     public partial class ApplicationDbContext : DbContext
@@ -23,9 +22,13 @@ namespace DevTestModel.Data
         public DbSet<SourceInfoModel> SourceInfoModel { get; set; }
         public DbSet<DC_NewsCategoryCR> DC_NewsCategoryCR { get; set; }
         public DbSet<DataHistoryArticle> DataHistoryArticle { get; set; }
+
+        //public DbSet<MailClient> MailClient { get; set; }
+
         ////public DbSet<MainViewWrapperModel> MainViewWrapperModel { get; set; } //remove
         //public DbSet<SourceInfoModel> SourceInfoModel { get; set; }
-
+        // dodat 3 klase , bindat ih ili insertat podatkle u bazu i retrieve , nadopuniti index da pokaze info za JedanKreirani acc
+        // sve ljepo dokupentirat + stavke sa mobitela + nesto... 
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)

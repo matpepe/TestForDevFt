@@ -1,0 +1,41 @@
+﻿<div class="card">
+    <div class="card-body">
+        <div class="button-container">
+            <button class="btn btn-primary btn-menu">
+                <a asp-controller="Home" asp-action="ExternalContentDrugsWarning" class="text-white">RawHtml</a>
+            </button>
+            <button class="btn btn-info btn-menu">
+                <a asp-controller="Mail" asp-action="Index" class="text-white">Mailk 2</a>
+            </button>
+            <button class="btn btn-info btn-menu">
+                <a asp-controller="Home" asp-action="Index" class="text-white">Back to Index</a>
+            </button>
+        </div>
+    </div>
+</div>
+<style>
+    .card {
+        width: 300px;
+        margin: auto;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-menu {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #007bff; /* Blue border color */
+        border-radius: 8px;
+        background-color: #007bff; /* Blue background color */
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-menu:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+</style>

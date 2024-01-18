@@ -1,156 +1,152 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevTestModel.Data;
+using Microsoft.AspNetCore.Mvc;
 using SmorcIRL.TempMail;
+using SmorcIRL.TempMail.Models;
 
 namespace TestWebAppMulti.Controllers
 {
     public class MailController : Controller
     {
-        private readonly MailClient _mailClient;
+        //_mailClientTm , API implementation
+        ApplicationDbContext _dbcontext;
+        IConfiguration _configuration;
+        private readonly ILogger<HomeController> _logger;
+        private readonly MailClient _mailClientTm;
+        private readonly MailClient _mailClientGw;
+        // Inject MailClient through constructor (you can use dependency injection)
 
         public MailController()
         {
-            // Use the default API URL (mail.tm)
-            _mailClient = new MailClient();
+            var apiUriTm = new Uri("https://api.mail.tm/");
+            var apiUriGw = new Uri("https://api.mail.gw/");
+
+            _mailClientTm = new MailClient(apiUriTm);
+            _mailClientGw = new MailClient(apiUriGw);
         }
 
-        public MailController(Uri baseUri)
-        {
-            // Use a custom API URL
-            _mailClient = new MailClient(baseUri);
-        }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             try
             {
-                var domains = _mailClient.GetAvailableDomains();
-                ViewBag.AvailableDomains = domains; // Pass the list to ViewBag
-                return View();
+                string registeredAddress = TempData["RegisteredAddress"] as string;
+                ViewBag.RegisteredAddress = registeredAddress;
+                // Check API Availability and store the result in ViewBag
+                var apiAvailabilityResponse = await CheckApiAvailability();
+                ViewBag.CheckApiAvailabilityResult = apiAvailabilityResponse;
+
+                // Get Available Domains and store the result in ViewBag
+                var availableDomains = await _mailClientTm.GetAvailableDomains();
+                ViewBag.AvailableDomains = availableDomains;
+
+                // Get First Available Domain Name and store the result in ViewBag
+                var firstAvailableDomainName = await _mailClientTm.GetFirstAvailableDomainName();
+                ViewBag.FirstAvailableDomainName = firstAvailableDomainName;
+
+                var domains = new DomainInfo[] { /* your domain data */ };
+                var accountInfo = new AccountInfo(); // Replace with your actual AccountInfo data
+
+                // Create a Tuple with the correct types
+                var model = new Tuple<IEnumerable<DomainInfo>, AccountInfo>(domains, accountInfo);
+
+                return View(model);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Failed to get available domains: {ex.Message}");
+                // Log the exception
+                //.LogError(ex, "Error in Index action.");
+
+                // Handle exceptions, for example, if there's an issue connecting to the API
+                return StatusCode(500, "Error in Index action.");
             }
+        }
+
+        public async Task<IActionResult> GetAvailableDomains()
+        {
+            // Choose the appropriate client based on your needs
+            var client = _mailClientTm; // or _mailClientGw
+
+            var domains = await client.GetAvailableDomains();
+            return View(domains);
+        }
+
+        public async Task<IActionResult> GetFirstAvailableDomainName()
+        {
+            // Choose the appropriate client based on your needs
+            var client = _mailClientTm; // or _mailClientGw
+
+            var domainName = await client.GetFirstAvailableDomainName();
+            return View((object)domainName);
+        }
+
+        public async Task<IActionResult> GenerateAccount(string password = null)
+        {
+            // Choose the appropriate client based on your needs
+            var client = _mailClientTm; // or _mailClientGw
+
+            await client.GenerateAccount(password);
+            return RedirectToAction(nameof(Index)); // Redirect to some action after generating account
+        }
+
+        public async Task<IActionResult> GetAccountInfo()
+        {
+            // Choose the appropriate client based on your needs
+            var client = _mailClientTm; // or _mailClientGw
+            AccountInfo info = await client.GetAccountInfo();
+
+            //var accountInfo = await client.GetAccountInfo();
+            return View(info);
+        }
+
+        public async Task<IActionResult> DeleteAccount()
+        {
+            // Choose the appropriate client based on your needs
+            var client = _mailClientTm; // or _mailClientGw
+
+            await client.DeleteAccount();
+            return RedirectToAction(nameof(Index)); // Redirect to some action after deletion
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string action, string email, string password, string optionalPassword)
+        public async Task<IActionResult> RegisterAccount(string fullAddress, string password)
         {
             try
             {
-                switch (action.ToLower())
-                {
-                    case "register":
-                        await _mailClient.Register(email, password);
-                        ViewData["Message"] = "Registration successful";
-                        break;
-                    case "getavailabledomains":
-                        var domains = await _mailClient.GetAvailableDomains();
-                        return View("GetAvailableDomains", domains);
-                    case "getfirstavailabledomainname":
-                        var domain = await _mailClient.GetFirstAvailableDomainName();
-                        ViewData["FirstAvailableDomain"] = domain;
-                        break;
-                    case "generateaccount":
-                        await _mailClient.GenerateAccount(optionalPassword);
-                        ViewData["Message"] = "Account generated successfully";
-                        break;
-                    case "getaccountinfo":
-                        var accountInfo = await _mailClient.GetAccountInfo();
-                        return View("GetAccountInfo", accountInfo);
-                    case "deleteaccount":
-                        await _mailClient.DeleteAccount();
-                        ViewData["Message"] = "Account deleted successfully";
-                        break;
-                    default:
-                        ViewData["ErrorMessage"] = "Invalid action";
-                        break;
-                }
+                await _mailClientTm.Register(fullAddress, password);
 
-                return View();
-            }
-            catch (Exception ex)
-            {
-                ViewData["ErrorMessage"] = $"Operation failed: {ex.Message}";
-                return View();
-            }
-        }
+                TempData["RegisteredAddress"] = fullAddress;
 
-        public async Task<IActionResult> Register(string email, string password)
-        {
-            try
-            {
-                await _mailClient.Register(email, password);
-                return Ok("Registration successful");
+                return RedirectToAction(nameof(Index));
+                //return Ok("Registration successful");
             }
             catch (Exception ex)
             {
                 return BadRequest($"Registration failed: {ex.Message}");
             }
         }
-
-        public async Task<IActionResult> GetAvailableDomains()
+        public async Task<IActionResult> CheckApiAvailability()
         {
             try
             {
-                var domains = await _mailClient.GetAvailableDomains();
-                return View(domains);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Failed to get available domains: {ex.Message}");
-            }
-        }
+                // Use _mailClientTm or _mailClientGw based on your requirements
+                var availableDomains = await _mailClientTm.GetAvailableDomains();
 
-        public async Task<IActionResult> GetFirstAvailableDomainName()
-        {
-            try
-            {
-                var domain = await _mailClient.GetFirstAvailableDomainName();
-                return View(domain);
+                // Handle the API response as needed
+                if (availableDomains != null)
+                {
+                    return Ok("API is reachable. Available domains: " + string.Join(", ", availableDomains.Select(d => d.Domain)));
+                }
+                else
+                {
+                    return StatusCode(500, "API call was not successful.");
+                }
             }
             catch (Exception ex)
             {
-                return BadRequest($"Failed to get first available domain name: {ex.Message}");
-            }
-        }
+                // Log the exception
+                //_logger.LogError(ex, "Error checking API availability.");
 
-        public async Task<IActionResult> GenerateAccount(string optionalPassword)
-        {
-            try
-            {
-                await _mailClient.GenerateAccount(optionalPassword);
-                return Ok("Account generated successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Failed to generate account: {ex.Message}");
-            }
-        }
-
-        public async Task<IActionResult> GetAccountInfo()
-        {
-            try
-            {
-                var accountInfo = await _mailClient.GetAccountInfo();
-                return View(accountInfo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Failed to get account info: {ex.Message}");
-            }
-        }
-
-        public async Task<IActionResult> DeleteAccount()
-        {
-            try
-            {
-                await _mailClient.DeleteAccount();
-                return Ok("Account deleted successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Failed to delete account: {ex.Message}");
+                // Handle exceptions, for example, if there's an issue connecting to the API
+                return StatusCode(500, "Error checking API availability.");
             }
         }
     }

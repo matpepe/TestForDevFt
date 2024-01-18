@@ -13,7 +13,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.2",
           "Newtonsoft.Json": "13.0.3",
-          "RestSharp.Serializers.NewtonsoftJson": "110.2.0"
+          "RestSharp.Serializers.NewtonsoftJson": "110.2.0",
+          "SmorcIRL.TempMail": "2.0.2"
         },
         "runtime": {
           "TestWebAppMulti.dll": {}
